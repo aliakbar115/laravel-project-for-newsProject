@@ -101,4 +101,9 @@ class UserController extends Controller
         $users_search = $users->latest()->paginate(10);
         return new \App\Http\Resources\V1\UserCollection($users_search);
     }
+    public function checkAdmin(Request $request){
+        $is_superuser=auth()->user()->is_superuser;
+        return $is_superuser;
+    }
+
 }

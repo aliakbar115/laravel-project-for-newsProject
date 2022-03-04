@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'email', 'password', 'tow_factor_type', 'phone_number', 'is_superuser', 'is_staff','email_verified_at'
+        'name', 'email', 'password', 'tow_factor_type', 'phone_number', 'is_superuser', 'is_staff','email_verified_at','api_token'
     ];
 
     /**
@@ -30,7 +30,6 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
     /**
      * The attributes that should be cast.
      *
@@ -39,7 +38,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
     public function isSuperUser()
     {
         return $this->is_superuser;
@@ -47,5 +45,13 @@ class User extends Authenticatable
     public function isStaffUser()
     {
         return $this->is_staff;
+    }
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

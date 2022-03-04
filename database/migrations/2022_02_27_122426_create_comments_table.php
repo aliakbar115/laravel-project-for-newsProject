@@ -20,7 +20,7 @@ class CreateCommentsTable extends Migration
             $table->unsignedBigInteger("commentable_id");  //   comment + able + _id
             $table->string("commentable_type");  //   comment + able + _type
             $table->unsignedBigInteger('parent_id')->default(0);
-            $table->enum('status',['unseen','seen','approved']);
+            $table->integer('approved')->default(0);
             $table->text('comment');
             $table->timestamps();
         });

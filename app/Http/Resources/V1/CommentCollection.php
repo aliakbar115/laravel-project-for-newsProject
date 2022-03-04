@@ -4,7 +4,7 @@ namespace App\Http\Resources\V1;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class UserCollection extends ResourceCollection
+class CommentCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -18,11 +18,13 @@ class UserCollection extends ResourceCollection
             'data' => $this->collection->map(function ($item, $key) {
                 return [
                     'id' => $item->id,
-                    'name' => $item->name,
-                    'email' => $item->email,
-                    'email_verified_at' => $item->email_verified_at,
-                    'phone_number' => $item->phone_number,
-                    'api_token' => $item->api_token
+                    'user' => $item->user,
+                    'parent' => $item->parent,
+                    'approved' => $item->approved,
+                    'comment' => $item->comment,
+                    'commentable' => $item->commentable,
+                    'child' => $item->child,
+                    'created_at'=>jdate($item->created_at)->format('Y-m-d')
                 ];
             })
         ];

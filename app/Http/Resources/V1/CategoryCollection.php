@@ -21,7 +21,8 @@ class CategoryCollection extends ResourceCollection
                     'name' => $item->name,
                     'lname'=>$item->lname,
                     'parent_id'=>$item->parent_id,
-                    'parent'=>$item->parent
+                    'parent'=>$item->parent,
+                    'child'=>$item->child
                 ];
             })
         ];
